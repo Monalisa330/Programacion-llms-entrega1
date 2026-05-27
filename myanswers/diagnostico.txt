@@ -1,0 +1,22 @@
+Pregunta 0331
+
+El generador de casos de uso no retorna correctamente el output esperado de la función classify.
+
+Actualmente retorna:
+
+return {"df": df, "target_col": "target"}, "target"
+
+por lo que el segundo elemento corresponde únicamente a un string y no al resultado esperado de la función solicitado en el enunciado (diccionario con accuracy y confusion_matrix).
+
+Esto puede ocasionar que el validador marque la respuesta como incorrecta aun cuando la implementación de answer-0331.py sea funcional y consistente con la especificación del problema.
+
+
+Pregunta 0229
+
+El generador retorna un objeto sklearn.linear_model.Lasso entrenado dentro de la tupla de salida:
+
+(model, int(coef_ceros), float(mae))
+
+Dependiendo de cómo el validador compare los resultados, puede existir un riesgo de incompatibilidad si se utiliza comparación directa de objetos (==), ya que dos modelos Lasso entrenados separadamente no necesariamente son iguales por identidad de objeto aunque tengan los mismos coeficientes y comportamiento.
+
+La implementación de answer-0229.py replica exactamente la lógica del generador.
